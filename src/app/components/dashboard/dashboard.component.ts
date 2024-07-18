@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentService } from '../../services/document.service';
+import { WebSocketService } from '../../services/web-socket.service';
 import { saveAs } from 'file-saver';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,15 +13,30 @@ export class DashboardComponent implements OnInit {
   files: any[] = [];
   displayedColumns: string[] = ['originalName', 'convertedName', 'status', 'actions'];
 
-  constructor(private documentService: DocumentService) { }
+  constructor(
+    private documentService: DocumentService,
+    private webSocketService: WebSocketService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     this.loadFiles();
+
+    this.webSocketService.getStatusUpdates().subscribe(status => {
+      const index = this.files.findIndex(file => file.id === status.fileId);
+
+      if (index !== -1) {
+        this.files[index].status = status.newDocumentStatus;
+        this.files[index].convertedName = status.convertedName;
+        this.cdr.detectChanges();
+      }
+    });
   }
 
   loadFiles(): void {
     this.documentService.getAllFiles().subscribe(data => {
       this.files = data;
+      this.cdr.detectChanges();
     });
   }
 

@@ -9,7 +9,7 @@ Document Converter Angular App is a front-end application built using Angular 16
 - [Setup](#setup)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [Testing](#testing))
+- [Testing](#testing)
 - [License](#license)
 
 ## Features
@@ -19,6 +19,7 @@ Document Converter Angular App is a front-end application built using Angular 16
 - Convert DOCX to PDF
 - View recent conversions and their statuses
 - Download converted files once conversion is completed
+- Real-time status updates using WebSocket
 - Responsive design using Angular Material
 
 ## Technologies
@@ -28,6 +29,7 @@ Document Converter Angular App is a front-end application built using Angular 16
 - RxJS
 - TypeScript
 - HTML/CSS
+- WebSocket
 
 ## Setup
 
@@ -80,6 +82,10 @@ Users can see the status of their conversions in the dashboard.
 ### Download Converted Document
 
 Once the conversion is completed, users can download the converted document by clicking the download button.
+
+### Real-time Status Updates
+
+The application uses WebSocket to receive real-time updates on the status of document conversions. This ensures that users are immediately informed when their documents are ready for download.
 
 ## API Endpoints
 
