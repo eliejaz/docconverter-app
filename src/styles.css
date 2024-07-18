@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+  }
+  
+  .upload-container {
+    border: 2px dashed #ccc;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .mat-toolbar .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .dashboard {
+    padding: 20px;
+  }
+  
+  .container {
+    margin: 20px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  mat-table {
+    width: 100%;
+  }
+  
+  mat-header-cell, mat-cell {
+    padding: 8px;
+  }
